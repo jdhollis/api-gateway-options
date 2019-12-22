@@ -56,7 +56,7 @@ module "options_proxy" {
 
   allow_headers = "'content-type,authorization,x-amz-date,x-api-key,x-amz-security-token,x-csrf-token'"
   allow_methods = "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
-  allow_origin  = var.allow_origin_override != "" ? var.allow_origin_override : "https://${aws_route53_record.site.name}"
+  allow_origin  = var.allow_origin_override != "" ? var.allow_origin_override : "https://${aws_route53_record.site.name}" # var.allow_origin_override makes it easier to work with API Gateway when in local development
   resource_id   = aws_api_gateway_resource.proxy.id
   rest_api_id   = aws_api_gateway_rest_api.site.id
 }
